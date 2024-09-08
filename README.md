@@ -2,6 +2,10 @@
 
 This Admin Panel API is built using Node.js, Express, and PostgreSQL to manage users, roles, projects, and audit logs with role-based access control. The API allows the Admin to create and manage users, assign roles, and manage projects. It also provides multi-level authentication and authorization using JWT tokens.
 
+### Weblink: [Deployment Link](https://admin-panel-api-elci.onrender.com)
+
+### Postman: [Collection](https://documenter.getpostman.com/view/33969186/2sAXjRWVXm)
+
 ## Features
 
 - **User Authentication:** Signin and Signout functionality with JWT token-based authentication.
@@ -69,7 +73,7 @@ This Admin Panel API is built using Node.js, Express, and PostgreSQL to manage u
 ### Installation
 To run the server side of the Admin Panel API locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.comt`
+1. Clone the repository: `git clone https://github.com/raushan-kumar7/admin-panel-api.git`
 2. Install the dependencies: `npm install`
 3. Start the server in development mode: `npm run dev`
 4. Alternatively, to start the server in production mode: `npm run start`
