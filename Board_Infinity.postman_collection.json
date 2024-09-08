@@ -1,0 +1,2852 @@
+{
+	"info": {
+		"_postman_id": "46587f48-107d-48bf-9d97-fa0e6164caa3",
+		"name": "Board_Infinity",
+		"description": "In this backend task, you'll develop an Admin Panel API using Node.js, Express, and PostgreSQL to manage user roles and project assignments efficiently. The application will support functionality for Admins, Managers, and Employees, ensuring appropriate access levels and permissions. Admins can create users, manage projects, and maintain audit logs, while Managers and Employees have restricted access based on their roles. Key features include user authentication with JWT, role-based access control, and soft delete functionality. The project will be evaluated on problem-solving skills, proficiency in backend technologies, and adherence to REST API principles.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33969186"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "register-admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"raushan\",\r\n    \"email\": \"raushan@gmail.com\",\r\n    \"password\": \"raushan12\",\r\n    \"role\": \"Admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{board}}/auth/signup",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						},
+						"description": "Allows the creation of the sole Admin user during initial setup."
+					},
+					"response": [
+						{
+							"name": "admin-registered",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"raushan\",\r\n    \"email\": \"raushan@gmail.com\",\r\n    \"password\": \"raushan12\",\r\n    \"role\": \"Admin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4600/api/v1/auth/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "269"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10d-SfIQ3aixUqoAWZ1Gx2P9vydl3o4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 05:19:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"id\": \"80724380-f580-448a-9317-a181ad048f3e\",\n        \"username\": \"raushan\",\n        \"email\": \"raushan@gmail.com\",\n        \"role\": \"Admin\",\n        \"createdAt\": \"2024-09-08T05:19:45.049Z\",\n        \"updatedAt\": \"2024-09-08T05:19:45.052Z\"\n    },\n    \"message\": \"User registered successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "admin-signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usernameOrEmail\": \"raushan\",\r\n    \"password\": \"raushan12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{board}}/auth/signin",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						},
+						"description": "Admin can sign in using credentials to access the dashboard."
+					},
+					"response": [
+						{
+							"name": "admin-signed-in",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usernameOrEmail\": \"raushan\",\r\n    \"password\": \"raushan12\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4600/api/v1/auth/signin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgwNzI0MzgwLWY1ODAtNDQ4YS05MzE3LWExODFhZDA0OGYzZSIsInVzZXJuYW1lIjoicmF1c2hhbiIsImVtYWlsIjoicmF1c2hhbkBnbWFpbC5jb20iLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE3MjU3NzI4MzIsImV4cCI6MTcyNTg1OTIzMn0.1_BYg1g2Do4RHIcfWOVzHtVJGxj7O6KK8-3ZKyPMANc; Path=/; HttpOnly; Secure"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgwNzI0MzgwLWY1ODAtNDQ4YS05MzE3LWExODFhZDA0OGYzZSIsImlhdCI6MTcyNTc3MjgzMiwiZXhwIjoxNzI2NjM2ODMyfQ.yDny5oDCGt2dG_zi2dkdrLm36h_KiduzdAxzYTQLYr8; Path=/; HttpOnly; Secure"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "788"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"314-JCVfz5v1IEWCrav6gFOx/l15VDk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 05:20:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"user\": {\n            \"id\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"username\": \"raushan\",\n            \"email\": \"raushan@gmail.com\",\n            \"role\": \"Admin\",\n            \"createdAt\": \"2024-09-08T05:19:45.049Z\",\n            \"updatedAt\": \"2024-09-08T05:20:32.967Z\",\n            \"deletedAt\": null\n        },\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgwNzI0MzgwLWY1ODAtNDQ4YS05MzE3LWExODFhZDA0OGYzZSIsInVzZXJuYW1lIjoicmF1c2hhbiIsImVtYWlsIjoicmF1c2hhbkBnbWFpbC5jb20iLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE3MjU3NzI4MzIsImV4cCI6MTcyNTg1OTIzMn0.1_BYg1g2Do4RHIcfWOVzHtVJGxj7O6KK8-3ZKyPMANc\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgwNzI0MzgwLWY1ODAtNDQ4YS05MzE3LWExODFhZDA0OGYzZSIsImlhdCI6MTcyNTc3MjgzMiwiZXhwIjoxNzI2NjM2ODMyfQ.yDny5oDCGt2dG_zi2dkdrLm36h_KiduzdAxzYTQLYr8\"\n    },\n    \"message\": \"User logged in successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "admin-signout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{board}}/auth/signout",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"auth",
+								"signout"
+							]
+						},
+						"description": "Allows the Admin to securely sign out from the system."
+					},
+					"response": [
+						{
+							"name": "admin-signout",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4600/api/v1/auth/signout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "accessToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Secure"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refreshToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Secure"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54-cRDQCqHHs/PqDsd/ZqsWF4q4TZs\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 05:21:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {},\n    \"message\": \"User logged out successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "register-users",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"arif\",\r\n    \"email\": \"arif@gmail.com\",\r\n    \"password\": \"arif12\",\r\n    \"role\": \"Employee\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{board}}/auth/register",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						},
+						"description": "Allows Admin to register new users with roles and credentials."
+					},
+					"response": [
+						{
+							"name": "manager1-user-created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"rohit\",\r\n    \"email\": \"rohit@gmail.com\",\r\n    \"password\": \"rohit12\",\r\n    \"role\": \"Manager\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4600/api/v1/auth/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "267"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10b-lxwpLx2Wkj72qepgB12Jfcv2SfQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Sep 2024 19:54:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"id\": \"3491fb47-616a-4ebf-8b18-05696dbf8a99\",\n        \"username\": \"rohit\",\n        \"email\": \"rohit@gmail.com\",\n        \"role\": \"Manager\",\n        \"createdAt\": \"2024-09-07T19:54:41.273Z\",\n        \"updatedAt\": \"2024-09-07T19:54:41.273Z\"\n    },\n    \"message\": \"User registered successfully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "employee1-user-created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"deependra\",\r\n    \"email\": \"deependra@gmail.com\",\r\n    \"password\": \"deependra2\",\r\n    \"role\": \"Employee\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{board}}/auth/register",
+									"host": [
+										"{{board}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "276"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"114-PuryZ8YdDRV6s4sZOHcDBX+jU4M\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Sep 2024 19:56:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"id\": \"9a9b7c05-9398-4e0d-a74f-2d7fc3fdab91\",\n        \"username\": \"deependra\",\n        \"email\": \"deependra@gmail.com\",\n        \"role\": \"Employee\",\n        \"createdAt\": \"2024-09-07T19:56:24.776Z\",\n        \"updatedAt\": \"2024-09-07T19:56:24.776Z\"\n    },\n    \"message\": \"User registered successfully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "employee2-user-created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"vikrant\",\r\n    \"email\": \"vikrant@gmail.com\",\r\n    \"password\": \"vikrant12\",\r\n    \"role\": \"Employee\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{board}}/auth/register",
+									"host": [
+										"{{board}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "272"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"110-476v57/wpPXVr4Cv1Ey3JzVj5qE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Sep 2024 19:59:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"id\": \"c21f3975-159e-432e-ab19-180b1b23821f\",\n        \"username\": \"vikrant\",\n        \"email\": \"vikrant@gmail.com\",\n        \"role\": \"Employee\",\n        \"createdAt\": \"2024-09-07T19:59:32.045Z\",\n        \"updatedAt\": \"2024-09-07T19:59:32.046Z\"\n    },\n    \"message\": \"User registered successfully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "manager2-user-created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"zafar\",\r\n    \"email\": \"zafar@gmail.com\",\r\n    \"password\": \"zafar12\",\r\n    \"role\": \"Manager\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{board}}/auth/register",
+									"host": [
+										"{{board}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "267"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10b-IB5KYsGvDAB9iRKz8UdW0YDY26I\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Sep 2024 20:00:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"id\": \"4f95396a-62bf-46ed-8e82-1ce132bc08ec\",\n        \"username\": \"zafar\",\n        \"email\": \"zafar@gmail.com\",\n        \"role\": \"Manager\",\n        \"createdAt\": \"2024-09-07T20:00:42.721Z\",\n        \"updatedAt\": \"2024-09-07T20:00:42.721Z\"\n    },\n    \"message\": \"User registered successfully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "employee3-user-created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"jiwan\",\r\n    \"email\": \"jiwan@gmail.com\",\r\n    \"password\": \"jiwan12\",\r\n    \"role\": \"Employee\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{board}}/auth/register",
+									"host": [
+										"{{board}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "268"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10c-5ZR3HKBOwnmQ4D+Uq8wptqNiQ10\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Sep 2024 20:02:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"id\": \"c81fe892-608e-4a6d-b96d-941fb4506042\",\n        \"username\": \"jiwan\",\n        \"email\": \"jiwan@gmail.com\",\n        \"role\": \"Employee\",\n        \"createdAt\": \"2024-09-07T20:02:11.131Z\",\n        \"updatedAt\": \"2024-09-07T20:02:11.131Z\"\n    },\n    \"message\": \"User registered successfully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "employee4-user-created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"arif\",\r\n    \"email\": \"arif@gmail.com\",\r\n    \"password\": \"arif12\",\r\n    \"role\": \"Employee\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{board}}/auth/register",
+									"host": [
+										"{{board}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "266"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10a-lo3UkrAsXNMwfu8gHwA/WN9keTQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Sep 2024 20:03:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"id\": \"0b866f58-894b-46c3-a1e5-d3e5f40305f9\",\n        \"username\": \"arif\",\n        \"email\": \"arif@gmail.com\",\n        \"role\": \"Employee\",\n        \"createdAt\": \"2024-09-07T20:03:05.725Z\",\n        \"updatedAt\": \"2024-09-07T20:03:05.725Z\"\n    },\n    \"message\": \"User registered successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "get-current-admin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{board}}/users/current-user",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"users",
+								"current-user"
+							]
+						},
+						"description": "Retrieve the current logged-in Admin's details from the system."
+					},
+					"response": [
+						{
+							"name": "get-current-admin-user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4600/api/v1/users/current-user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"current-user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "289"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"121-g8E5uG7aM9deGY9Ar3x1eptUKns\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 05:38:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"id\": \"80724380-f580-448a-9317-a181ad048f3e\",\n        \"username\": \"raushan\",\n        \"email\": \"raushan@gmail.com\",\n        \"role\": \"Admin\",\n        \"createdAt\": \"2024-09-08T05:19:45.049Z\",\n        \"updatedAt\": \"2024-09-08T05:26:59.915Z\",\n        \"deletedAt\": null\n    },\n    \"message\": \"Current user found successfully\",\n    \"success\": true\n}"
+						}
+					]
+				}
+			],
+			"description": "The Admin has full control over the system, including creating users, managing projects, assigning roles, viewing audit logs, and restoring soft-deleted resources. Only one Admin exists in the application."
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "fetch-all-users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{board}}/users",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "Retrieves a list of all users with Admin or Manager access."
+					},
+					"response": [
+						{
+							"name": "fetched-all-users-by-admin",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4600/api/v1/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1722"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6ba-tpYrmj0+Tk4IGfyMcUJ1zYxCEZA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Sep 2024 20:07:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": [\n        {\n            \"id\": \"cc67eda7-6d11-4264-8ef5-769d7905f4da\",\n            \"username\": \"raushan\",\n            \"email\": \"raushan@gmail.com\",\n            \"role\": \"Admin\",\n            \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNjNjdlZGE3LTZkMTEtNDI2NC04ZWY1LTc2OWQ3OTA1ZjRkYSIsImlhdCI6MTcyNTczODgxMSwiZXhwIjoxNzI2NjAyODExfQ.pD8yHGHhk0fZ5BvzO5b3LVP9-c5lsdhIVAqh6pTSNbE\",\n            \"createdAt\": \"2024-09-07T19:45:19.665Z\",\n            \"updatedAt\": \"2024-09-07T19:53:31.054Z\"\n        },\n        {\n            \"id\": \"3491fb47-616a-4ebf-8b18-05696dbf8a99\",\n            \"username\": \"rohit\",\n            \"email\": \"rohit@gmail.com\",\n            \"role\": \"Manager\",\n            \"refreshToken\": null,\n            \"createdAt\": \"2024-09-07T19:54:41.273Z\",\n            \"updatedAt\": \"2024-09-07T19:54:41.273Z\"\n        },\n        {\n            \"id\": \"9a9b7c05-9398-4e0d-a74f-2d7fc3fdab91\",\n            \"username\": \"deependra\",\n            \"email\": \"deependra@gmail.com\",\n            \"role\": \"Employee\",\n            \"refreshToken\": null,\n            \"createdAt\": \"2024-09-07T19:56:24.776Z\",\n            \"updatedAt\": \"2024-09-07T19:56:24.776Z\"\n        },\n        {\n            \"id\": \"c21f3975-159e-432e-ab19-180b1b23821f\",\n            \"username\": \"vikrant\",\n            \"email\": \"vikrant@gmail.com\",\n            \"role\": \"Employee\",\n            \"refreshToken\": null,\n            \"createdAt\": \"2024-09-07T19:59:32.045Z\",\n            \"updatedAt\": \"2024-09-07T19:59:32.046Z\"\n        },\n        {\n            \"id\": \"4f95396a-62bf-46ed-8e82-1ce132bc08ec\",\n            \"username\": \"zafar\",\n            \"email\": \"zafar@gmail.com\",\n            \"role\": \"Manager\",\n            \"refreshToken\": null,\n            \"createdAt\": \"2024-09-07T20:00:42.721Z\",\n            \"updatedAt\": \"2024-09-07T20:00:42.721Z\"\n        },\n        {\n            \"id\": \"c81fe892-608e-4a6d-b96d-941fb4506042\",\n            \"username\": \"jiwan\",\n            \"email\": \"jiwan@gmail.com\",\n            \"role\": \"Employee\",\n            \"refreshToken\": null,\n            \"createdAt\": \"2024-09-07T20:02:11.131Z\",\n            \"updatedAt\": \"2024-09-07T20:02:11.131Z\"\n        },\n        {\n            \"id\": \"0b866f58-894b-46c3-a1e5-d3e5f40305f9\",\n            \"username\": \"arif\",\n            \"email\": \"arif@gmail.com\",\n            \"role\": \"Employee\",\n            \"refreshToken\": null,\n            \"createdAt\": \"2024-09-07T20:03:05.725Z\",\n            \"updatedAt\": \"2024-09-07T20:03:05.725Z\"\n        }\n    ],\n    \"message\": \"Users found successfully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "fetched-all-users-by-manager",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{board}}/users",
+									"host": [
+										"{{board}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1722"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6ba-eXpXxgln0rAvjZP1kw43jVN4g7s\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Sep 2024 21:12:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": [\n        {\n            \"id\": \"9a9b7c05-9398-4e0d-a74f-2d7fc3fdab91\",\n            \"username\": \"deependra\",\n            \"email\": \"deependra@gmail.com\",\n            \"role\": \"Employee\",\n            \"refreshToken\": null,\n            \"createdAt\": \"2024-09-07T19:56:24.776Z\",\n            \"updatedAt\": \"2024-09-07T19:56:24.776Z\"\n        },\n        {\n            \"id\": \"c21f3975-159e-432e-ab19-180b1b23821f\",\n            \"username\": \"vikrant\",\n            \"email\": \"vikrant@gmail.com\",\n            \"role\": \"Employee\",\n            \"refreshToken\": null,\n            \"createdAt\": \"2024-09-07T19:59:32.045Z\",\n            \"updatedAt\": \"2024-09-07T19:59:32.046Z\"\n        },\n        {\n            \"id\": \"4f95396a-62bf-46ed-8e82-1ce132bc08ec\",\n            \"username\": \"zafar\",\n            \"email\": \"zafar@gmail.com\",\n            \"role\": \"Manager\",\n            \"refreshToken\": null,\n            \"createdAt\": \"2024-09-07T20:00:42.721Z\",\n            \"updatedAt\": \"2024-09-07T20:00:42.721Z\"\n        },\n        {\n            \"id\": \"c81fe892-608e-4a6d-b96d-941fb4506042\",\n            \"username\": \"jiwan\",\n            \"email\": \"jiwan@gmail.com\",\n            \"role\": \"Employee\",\n            \"refreshToken\": null,\n            \"createdAt\": \"2024-09-07T20:02:11.131Z\",\n            \"updatedAt\": \"2024-09-07T20:02:11.131Z\"\n        },\n        {\n            \"id\": \"0b866f58-894b-46c3-a1e5-d3e5f40305f9\",\n            \"username\": \"arif\",\n            \"email\": \"arif@gmail.com\",\n            \"role\": \"Employee\",\n            \"refreshToken\": null,\n            \"createdAt\": \"2024-09-07T20:03:05.725Z\",\n            \"updatedAt\": \"2024-09-07T20:03:05.725Z\"\n        },\n        {\n            \"id\": \"cc67eda7-6d11-4264-8ef5-769d7905f4da\",\n            \"username\": \"raushan\",\n            \"email\": \"raushan@gmail.com\",\n            \"role\": \"Admin\",\n            \"refreshToken\": null,\n            \"createdAt\": \"2024-09-07T19:45:19.665Z\",\n            \"updatedAt\": \"2024-09-07T21:01:02.214Z\"\n        },\n        {\n            \"id\": \"3491fb47-616a-4ebf-8b18-05696dbf8a99\",\n            \"username\": \"rohit\",\n            \"email\": \"rohit@gmail.com\",\n            \"role\": \"Manager\",\n            \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM0OTFmYjQ3LTYxNmEtNGViZi04YjE4LTA1Njk2ZGJmOGE5OSIsImlhdCI6MTcyNTc0MzE0NiwiZXhwIjoxNzI2NjA3MTQ2fQ.EJ39QXn_7fvWPsB8YbF-Y00lQVUFx6PZkdNFNWcZiwU\",\n            \"createdAt\": \"2024-09-07T19:54:41.273Z\",\n            \"updatedAt\": \"2024-09-07T21:05:46.526Z\"\n        }\n    ],\n    \"message\": \"Users found successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "users-signin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usernameOrEmail\": \"rohit\",\r\n    \"password\": \"rohit12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{board}}/auth/signin",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						},
+						"description": "Users can sign in using their email and password credentials."
+					},
+					"response": [
+						{
+							"name": "manager-user-signed-in",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usernameOrEmail\": \"rohit\",\r\n    \"password\": \"rohit12\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4600/api/v1/auth/signin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIxMjA1ZGY0LWRkYmItNGRkZC05MjU4LTY4Y2UyOTgzN2EzYSIsInVzZXJuYW1lIjoicm9oaXQiLCJlbWFpbCI6InJvaGl0QGdtYWlsLmNvbSIsInJvbGUiOiJNYW5hZ2VyIiwiaWF0IjoxNzI1NzczMTUxLCJleHAiOjE3MjU4NTk1NTF9.-6cfs2auPjxSXHt4G4t71Uc77NLtG1aWAxBP9p1GZns; Path=/; HttpOnly; Secure"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIxMjA1ZGY0LWRkYmItNGRkZC05MjU4LTY4Y2UyOTgzN2EzYSIsImlhdCI6MTcyNTc3MzE1MSwiZXhwIjoxNzI2NjM3MTUxfQ.sObr47lWbY9_EPA7L_Lp6t-HDC7KrDu66oQ9hDMppKE; Path=/; HttpOnly; Secure"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "783"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30f-ZpvJ1HWYTl6SK0kJ3wxFTFL96BM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 05:25:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"user\": {\n            \"id\": \"b1205df4-ddbb-4ddd-9258-68ce29837a3a\",\n            \"username\": \"rohit\",\n            \"email\": \"rohit@gmail.com\",\n            \"role\": \"Manager\",\n            \"createdAt\": \"2024-09-08T05:22:40.849Z\",\n            \"updatedAt\": \"2024-09-08T05:25:51.204Z\",\n            \"deletedAt\": null\n        },\n        \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIxMjA1ZGY0LWRkYmItNGRkZC05MjU4LTY4Y2UyOTgzN2EzYSIsInVzZXJuYW1lIjoicm9oaXQiLCJlbWFpbCI6InJvaGl0QGdtYWlsLmNvbSIsInJvbGUiOiJNYW5hZ2VyIiwiaWF0IjoxNzI1NzczMTUxLCJleHAiOjE3MjU4NTk1NTF9.-6cfs2auPjxSXHt4G4t71Uc77NLtG1aWAxBP9p1GZns\",\n        \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImIxMjA1ZGY0LWRkYmItNGRkZC05MjU4LTY4Y2UyOTgzN2EzYSIsImlhdCI6MTcyNTc3MzE1MSwiZXhwIjoxNzI2NjM3MTUxfQ.sObr47lWbY9_EPA7L_Lp6t-HDC7KrDu66oQ9hDMppKE\"\n    },\n    \"message\": \"User logged in successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "users-signout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{board}}/auth/signout",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"auth",
+								"signout"
+							]
+						},
+						"description": "The **Signout** feature logs users out, ending their session."
+					},
+					"response": [
+						{
+							"name": "manager-user-signout",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4600/api/v1/auth/signout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "accessToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Secure"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refreshToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Secure"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54-cRDQCqHHs/PqDsd/ZqsWF4q4TZs\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 07 Sep 2024 21:14:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {},\n    \"message\": \"User logged out successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "get-user-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{board}}/users/:userId",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "272d4ac7-d924-4d0a-a449-facf275285f7"
+								}
+							]
+						},
+						"description": "Fetches details of a specific user by their unique ID."
+					},
+					"response": [
+						{
+							"name": "user-fetched-by-userId",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4600/api/v1/users/:userId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "272d4ac7-d924-4d0a-a449-facf275285f7"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "261"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"105-cTEzFNY/gG17Ohk+2gKe9FA6vNU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 05:27:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"id\": \"272d4ac7-d924-4d0a-a449-facf275285f7\",\n        \"username\": \"arif\",\n        \"email\": \"arif@gmail.com\",\n        \"role\": \"Employee\",\n        \"createdAt\": \"2024-09-08T05:24:47.323Z\",\n        \"updatedAt\": \"2024-09-08T05:24:47.323Z\"\n    },\n    \"message\": \"User found successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "update-user-details",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"arif_khan\",\r\n    \"email\": \"arif.khan@gmail.com\",\r\n    \"password\": \"arif12\",\r\n    \"role\": \"Employee\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{board}}/users/:userId",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "272d4ac7-d924-4d0a-a449-facf275285f7"
+								}
+							]
+						},
+						"description": "Admin can update user details including role and personal info."
+					},
+					"response": [
+						{
+							"name": "user-details-updated",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"arif_khan\",\r\n    \"email\": \"arif.khan@gmail.com\",\r\n    \"password\": \"arif12\",\r\n    \"role\": \"Employee\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4600/api/v1/users/:userId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "272d4ac7-d924-4d0a-a449-facf275285f7"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "384"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"180-r1nLm8f/Tt0UAxti6ElF2Co10fY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 05:29:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"id\": \"272d4ac7-d924-4d0a-a449-facf275285f7\",\n        \"username\": \"arif_khan\",\n        \"email\": \"arif.khan@gmail.com\",\n        \"password\": \"$2a$10$vHmHXfLH1Y.1OBNBj1YItOHiPMxAccqexzMx0sRgvB8p5w6.HID2i\",\n        \"role\": \"Employee\",\n        \"refreshToken\": null,\n        \"createdAt\": \"2024-09-08T05:24:47.323Z\",\n        \"updatedAt\": \"2024-09-08T05:29:09.202Z\",\n        \"deletedAt\": null\n    },\n    \"message\": \"User updated successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "soft-delete-user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{board}}/users/:userId",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "272d4ac7-d924-4d0a-a449-facf275285f7"
+								}
+							]
+						},
+						"description": "Soft deletes a user, marking them as inactive, not removed."
+					},
+					"response": [
+						{
+							"name": "user-soft-deleted",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4600/api/v1/users/:userId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "272d4ac7-d924-4d0a-a449-facf275285f7"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-CVWnuzEpJb4MwE3Mx/5jtNdTsQs\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 05:29:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {},\n    \"message\": \"User soft deleted successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "delete-user-permanent",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{board}}/users/permanent/:userId",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"users",
+								"permanent",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "272d4ac7-d924-4d0a-a449-facf275285f7"
+								}
+							]
+						},
+						"description": "Permanently deletes a user, removing all associated data."
+					},
+					"response": [
+						{
+							"name": "user-deleted-permanent",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4600/api/v1/users/permanent/:userId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"permanent",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "272d4ac7-d924-4d0a-a449-facf275285f7"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "93"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5d-6H+cQ3vhLMtRGz22UHOKvf6RazU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 05:35:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {},\n    \"message\": \"User permanently deleted successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "restore-soft-deleted-user",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{board}}/users/restore/:userId",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"users",
+								"restore",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "272d4ac7-d924-4d0a-a449-facf275285f7"
+								}
+							]
+						},
+						"description": "Restores a previously soft-deleted user to active status."
+					},
+					"response": [
+						{
+							"name": "soft-deleted-user-restored",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4600/api/v1/users/restore/:userId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"restore",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "272d4ac7-d924-4d0a-a449-facf275285f7"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "291"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"123-Af82tt52QfFaJRm19/fwzU7NTe0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 05:33:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"id\": \"272d4ac7-d924-4d0a-a449-facf275285f7\",\n        \"username\": \"arif_khan\",\n        \"email\": \"arif.khan@gmail.com\",\n        \"role\": \"Employee\",\n        \"createdAt\": \"2024-09-08T05:24:47.323Z\",\n        \"updatedAt\": \"2024-09-08T05:33:49.519Z\",\n        \"deletedAt\": null\n    },\n    \"message\": \"User restored successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "get-current-user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{board}}/users/current-user",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"users",
+								"current-user"
+							]
+						},
+						"description": "Fetches the profile details of the currently authenticated user."
+					},
+					"response": [
+						{
+							"name": "current-user-fetched",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4600/api/v1/users/current-user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"current-user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "287"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"11f-anXUgpa/nOSAf31wgZ6w6izRvZo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 05:40:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"id\": \"b1205df4-ddbb-4ddd-9258-68ce29837a3a\",\n        \"username\": \"rohit\",\n        \"email\": \"rohit@gmail.com\",\n        \"role\": \"Manager\",\n        \"createdAt\": \"2024-09-08T05:22:40.849Z\",\n        \"updatedAt\": \"2024-09-08T05:39:57.530Z\",\n        \"deletedAt\": null\n    },\n    \"message\": \"Current user found successfully\",\n    \"success\": true\n}"
+						}
+					]
+				}
+			],
+			"description": "The **Users** feature allows Admins to create, update, and manage users. Users can log in, view their profiles, and access assigned projects, with role-based access controlling their permissions and actions."
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "create-project",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Milk Collection Services\",\r\n    \"description\": \"Milk Collection Services ensure efficient collection, processing, and management of milk from farmers, ensuring quality and timely delivery.\",\r\n    \"assignedTo\": [\r\n        \"ea518d78-6214-4c13-9bf1-d549a2a3a3ac\",\r\n        \"a7911d90-208a-41d9-942e-cd22d345ee7c\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{board}}/project",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"project"
+							]
+						},
+						"description": "Creates a new project, assignable to users by Admins."
+					},
+					"response": [
+						{
+							"name": "project-created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"ExlporeEase\",\r\n    \"description\": \"ExploreEase is a travel website that helps users discover destinations, plan trips, and explore personalized travel experiences.\",\r\n    \"assignedTo\": [\r\n        \"b1205df4-ddbb-4ddd-9258-68ce29837a3a\",\r\n        \"b407db1d-2a96-45e3-8f73-43b318c3bc1d\",\r\n        \"3c23de21-4dee-411c-800f-82358db65e2d\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4600/api/v1/project",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"project"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "900"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"384-dgcHfNgr3oRsv/qWB1xmy9F34GE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 08:06:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"id\": \"c6a4874a-66e4-4fa4-ac44-7c1a0fd1d89a\",\n        \"name\": \"ExlporeEase\",\n        \"description\": \"ExploreEase is a travel website that helps users discover destinations, plan trips, and explore personalized travel experiences.\",\n        \"createdBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n        \"deletedAt\": null,\n        \"createdAt\": \"2024-09-08T08:06:15.152Z\",\n        \"updatedAt\": \"2024-09-08T08:06:15.152Z\",\n        \"creator\": {\n            \"id\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"username\": \"raushan\",\n            \"email\": \"raushan@gmail.com\"\n        },\n        \"assignedUsers\": [\n            {\n                \"id\": \"b407db1d-2a96-45e3-8f73-43b318c3bc1d\",\n                \"username\": \"deependra\",\n                \"email\": \"deependra@gmail.com\",\n                \"role\": \"Employee\"\n            },\n            {\n                \"id\": \"3c23de21-4dee-411c-800f-82358db65e2d\",\n                \"username\": \"vikrant\",\n                \"email\": \"vikrant@gmail.com\",\n                \"role\": \"Employee\"\n            },\n            {\n                \"id\": \"b1205df4-ddbb-4ddd-9258-68ce29837a3a\",\n                \"username\": \"rohit\",\n                \"email\": \"rohit@gmail.com\",\n                \"role\": \"Manager\"\n            }\n        ]\n    },\n    \"message\": \"Project created successfully\",\n    \"success\": true\n}"
+						},
+						{
+							"name": "project2-created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Milk Collection Services\",\r\n    \"description\": \"Milk Collection Services ensure efficient collection, processing, and management of milk from farmers, ensuring quality and timely delivery.\",\r\n    \"assignedTo\": [\r\n        \"ea518d78-6214-4c13-9bf1-d549a2a3a3ac\",\r\n        \"a7911d90-208a-41d9-942e-cd22d345ee7c\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{board}}/project",
+									"host": [
+										"{{board}}"
+									],
+									"path": [
+										"project"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "804"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"324-ipunoD61jcz2DnBzbOmFx74LCdc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 09:01:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 201,\n    \"data\": {\n        \"id\": \"0d08c4d9-e287-40f2-99cf-8adc0373addf\",\n        \"name\": \"Milk Collection Services\",\n        \"description\": \"Milk Collection Services ensure efficient collection, processing, and management of milk from farmers, ensuring quality and timely delivery.\",\n        \"createdBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n        \"deletedAt\": null,\n        \"createdAt\": \"2024-09-08T09:01:36.331Z\",\n        \"updatedAt\": \"2024-09-08T09:01:36.333Z\",\n        \"creator\": {\n            \"id\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"username\": \"raushan\",\n            \"email\": \"raushan@gmail.com\"\n        },\n        \"assignedUsers\": [\n            {\n                \"id\": \"ea518d78-6214-4c13-9bf1-d549a2a3a3ac\",\n                \"username\": \"zafar\",\n                \"email\": \"zafar@gmail.com\",\n                \"role\": \"Manager\"\n            },\n            {\n                \"id\": \"a7911d90-208a-41d9-942e-cd22d345ee7c\",\n                \"username\": \"jiwan\",\n                \"email\": \"jiwan@gmail.com\",\n                \"role\": \"Employee\"\n            }\n        ]\n    },\n    \"message\": \"Project created successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "get-all-projects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{board}}/project",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"project"
+							]
+						},
+						"description": "Retrieves a list of all projects accessible to the user."
+					},
+					"response": [
+						{
+							"name": "projects-fetched",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4600/api/v1/project",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"project"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "444"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1bc-yRGY0W/q5f2UFc+1f9zhMxHV2Gc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 08:49:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": [\n        {\n            \"id\": \"c6a4874a-66e4-4fa4-ac44-7c1a0fd1d89a\",\n            \"name\": \"ExlporeEase\",\n            \"description\": \"ExploreEase is a travel website that helps users discover destinations, plan trips, and explore personalized travel experiences.\",\n            \"createdBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"deletedAt\": null,\n            \"createdAt\": \"2024-09-08T08:06:15.152Z\",\n            \"updatedAt\": \"2024-09-08T08:06:15.152Z\"\n        }\n    ],\n    \"message\": \"Projects retrieved successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "get-project-by-Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{board}}/project/:projectId",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"project",
+								":projectId"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": "c6a4874a-66e4-4fa4-ac44-7c1a0fd1d89a"
+								}
+							]
+						},
+						"description": "Retrieves detailed information for a specific project by ID."
+					},
+					"response": [
+						{
+							"name": "project-get-by-Id-fetched",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4600/api/v1/project/:projectId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"project",
+										":projectId"
+									],
+									"variable": [
+										{
+											"key": "projectId",
+											"value": "c6a4874a-66e4-4fa4-ac44-7c1a0fd1d89a"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "441"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b9-uhvGLlHfsarbEiLBuHfCXLvNyV4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 08:51:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"id\": \"c6a4874a-66e4-4fa4-ac44-7c1a0fd1d89a\",\n        \"name\": \"ExlporeEase\",\n        \"description\": \"ExploreEase is a travel website that helps users discover destinations, plan trips, and explore personalized travel experiences.\",\n        \"createdBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n        \"deletedAt\": null,\n        \"createdAt\": \"2024-09-08T08:06:15.152Z\",\n        \"updatedAt\": \"2024-09-08T08:06:15.152Z\"\n    },\n    \"message\": \"Project retrieved successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "update-projects-details",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"MilkInn\",\r\n    \"description\": \"MilkInn is a milk collection website that streamlines the collection, tracking, and management of milk from farmers efficiently.\",\r\n    \"assignedTo\": [\r\n        \"ea518d78-6214-4c13-9bf1-d549a2a3a3ac\",\r\n        \"a7911d90-208a-41d9-942e-cd22d345ee7c\",\r\n        \"b407db1d-2a96-45e3-8f73-43b318c3bc1d\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{board}}/project/:projectId",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"project",
+								":projectId"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": "0d08c4d9-e287-40f2-99cf-8adc0373addf"
+								}
+							]
+						},
+						"description": "Allows Admins to update details for existing projects."
+					},
+					"response": [
+						{
+							"name": "project-details-updated",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"MilkInn\",\r\n    \"description\": \"MilkInn is a milk collection website that streamlines the collection, tracking, and management of milk from farmers efficiently.\",\r\n    \"assignedTo\": [\r\n        \"ea518d78-6214-4c13-9bf1-d549a2a3a3ac\",\r\n        \"a7911d90-208a-41d9-942e-cd22d345ee7c\",\r\n        \"b407db1d-2a96-45e3-8f73-43b318c3bc1d\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4600/api/v1/project/:projectId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"project",
+										":projectId"
+									],
+									"variable": [
+										{
+											"key": "projectId",
+											"value": "0d08c4d9-e287-40f2-99cf-8adc0373addf"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "435"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b3-7/sHxxp8B/EctZYjYDp+qPerakE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 09:05:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"id\": \"0d08c4d9-e287-40f2-99cf-8adc0373addf\",\n        \"name\": \"MilkInn\",\n        \"description\": \"MilkInn is a milk collection website that streamlines the collection, tracking, and management of milk from farmers efficiently.\",\n        \"createdBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n        \"deletedAt\": null,\n        \"createdAt\": \"2024-09-08T09:01:36.331Z\",\n        \"updatedAt\": \"2024-09-08T09:05:48.013Z\"\n    },\n    \"message\": \"Project updated successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "soft-delete-project",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{board}}/project/:projectId",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"project",
+								":projectId"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": "0d08c4d9-e287-40f2-99cf-8adc0373addf"
+								}
+							]
+						},
+						"description": "Marks a project as deleted without permanently removing it."
+					},
+					"response": [
+						{
+							"name": "project-softly-deleted",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4600/api/v1/project/:projectId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"project",
+										":projectId"
+									],
+									"variable": [
+										{
+											"key": "projectId",
+											"value": "0d08c4d9-e287-40f2-99cf-8adc0373addf"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "462"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1ce-BSK3bvt67J2H+sbNPqfgPybMkLM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 09:11:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"id\": \"0d08c4d9-e287-40f2-99cf-8adc0373addf\",\n        \"name\": \"MilkInn\",\n        \"description\": \"MilkInn is a milk collection website that streamlines the collection, tracking, and management of milk from farmers efficiently.\",\n        \"createdBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n        \"deletedAt\": \"2024-09-08T09:11:53.137Z\",\n        \"createdAt\": \"2024-09-08T09:01:36.331Z\",\n        \"updatedAt\": \"2024-09-08T09:11:53.139Z\"\n    },\n    \"message\": \"Project soft deleted successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "permanent-delete-project",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{board}}/project/permanent/:projectId",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"project",
+								"permanent",
+								":projectId"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": "0d08c4d9-e287-40f2-99cf-8adc0373addf"
+								}
+							]
+						},
+						"description": "Permanently removes a project from the database, by passing soft delete."
+					},
+					"response": [
+						{
+							"name": "project-deleted-permanent",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4600/api/v1/project/permanent/:projectId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"project",
+										"permanent",
+										":projectId"
+									],
+									"variable": [
+										{
+											"key": "projectId",
+											"value": "0d08c4d9-e287-40f2-99cf-8adc0373addf"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "96"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"60-VS5cyunlxATiFaYQzi1ypKahfuk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 09:17:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {},\n    \"message\": \"Project permanently deleted successfully\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "restore-projects-details",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{board}}/project/restore/:projectId",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"project",
+								"restore",
+								":projectId"
+							],
+							"variable": [
+								{
+									"key": "projectId",
+									"value": "0d08c4d9-e287-40f2-99cf-8adc0373addf"
+								}
+							]
+						},
+						"description": "Restores a previously soft-deleted project and its details."
+					},
+					"response": [
+						{
+							"name": "project-details-restored",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4600/api/v1/project/restore/:projectId",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"project",
+										"restore",
+										":projectId"
+									],
+									"variable": [
+										{
+											"key": "projectId",
+											"value": "0d08c4d9-e287-40f2-99cf-8adc0373addf"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "436"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b4-00mPwPwyNc93ClIDCJjVAPLzaWY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 09:14:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"id\": \"0d08c4d9-e287-40f2-99cf-8adc0373addf\",\n        \"name\": \"MilkInn\",\n        \"description\": \"MilkInn is a milk collection website that streamlines the collection, tracking, and management of milk from farmers efficiently.\",\n        \"createdBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n        \"deletedAt\": null,\n        \"createdAt\": \"2024-09-08T09:01:36.331Z\",\n        \"updatedAt\": \"2024-09-08T09:14:55.669Z\"\n    },\n    \"message\": \"Project restored successfully\",\n    \"success\": true\n}"
+						}
+					]
+				}
+			],
+			"description": "The **Projects** feature enables Admins to create, update, and delete projects. Managers and Employees can view and manage projects assigned to them, with Admins overseeing all project-related actions."
+		},
+		{
+			"name": "Audit-Logs",
+			"item": [
+				{
+					"name": "audit-logs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{board}}/audit-logs",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"audit-logs"
+							]
+						},
+						"description": "Records actions and changes for administrative review and tracking."
+					},
+					"response": [
+						{
+							"name": "fetched-all-audit-logs",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4600/api/v1/audit-logs",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"audit-logs"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "13132"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"334c-lZgoZsY58hMWUFHD43NuQq5fduY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 09:22:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": [\n        {\n            \"id\": \"c92fcda6-f601-4738-ad7e-4da90b91f4dd\",\n            \"action\": \"PERMANENT_DELETE_PROJECT\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T09:17:10.581Z\",\n            \"targetResource\": \"0d08c4d9-e287-40f2-99cf-8adc0373addf\",\n            \"createdAt\": \"2024-09-08T09:17:10.583Z\",\n            \"updatedAt\": \"2024-09-08T09:17:10.583Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"131e98d3-a36b-4896-9dab-17fc10fc8754\",\n            \"action\": \"RESTORE_PROJECT\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T09:14:55.928Z\",\n            \"targetResource\": \"0d08c4d9-e287-40f2-99cf-8adc0373addf\",\n            \"createdAt\": \"2024-09-08T09:14:55.928Z\",\n            \"updatedAt\": \"2024-09-08T09:14:55.928Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"cd447851-1a22-438a-b6d9-b6d998259490\",\n            \"action\": \"SOFT_DELETE_PROJECT\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T09:11:53.406Z\",\n            \"targetResource\": \"0d08c4d9-e287-40f2-99cf-8adc0373addf\",\n            \"createdAt\": \"2024-09-08T09:11:53.407Z\",\n            \"updatedAt\": \"2024-09-08T09:11:53.407Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"44333ee4-712f-4e50-ad26-680ce39c2c4d\",\n            \"action\": \"SOFT_DELETE_PROJECT\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T09:07:03.773Z\",\n            \"targetResource\": \"0d08c4d9-e287-40f2-99cf-8adc0373addf\",\n            \"createdAt\": \"2024-09-08T09:07:03.773Z\",\n            \"updatedAt\": \"2024-09-08T09:07:03.773Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"6c290082-b1b3-4abd-8aff-644dc7805032\",\n            \"action\": \"UPDATE_PROJECT_DETAILS\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T09:05:48.821Z\",\n            \"targetResource\": \"0d08c4d9-e287-40f2-99cf-8adc0373addf\",\n            \"createdAt\": \"2024-09-08T09:05:48.821Z\",\n            \"updatedAt\": \"2024-09-08T09:05:48.821Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"c16ea92c-375f-4b40-9162-98661778431f\",\n            \"action\": \"CREATE_PROJECT\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T09:01:37.140Z\",\n            \"targetResource\": \"0d08c4d9-e287-40f2-99cf-8adc0373addf\",\n            \"createdAt\": \"2024-09-08T09:01:37.140Z\",\n            \"updatedAt\": \"2024-09-08T09:01:37.140Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"0c8c32d9-928b-4043-81e2-b4923643ed11\",\n            \"action\": \"FETCH_PROJECT_BY_ID\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T08:51:37.778Z\",\n            \"targetResource\": \"c6a4874a-66e4-4fa4-ac44-7c1a0fd1d89a\",\n            \"createdAt\": \"2024-09-08T08:51:37.779Z\",\n            \"updatedAt\": \"2024-09-08T08:51:37.779Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"ccbd1a3f-45dc-4683-adf7-ca1e9d8f9801\",\n            \"action\": \"FETCH_ALL_PROJECTS\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T08:49:50.843Z\",\n            \"targetResource\": \"c6a4874a-66e4-4fa4-ac44-7c1a0fd1d89a\",\n            \"createdAt\": \"2024-09-08T08:49:50.844Z\",\n            \"updatedAt\": \"2024-09-08T08:49:50.844Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"eaeeecad-a722-478c-928a-d4c6472620ba\",\n            \"action\": \"CREATE_PROJECT\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T08:06:15.936Z\",\n            \"targetResource\": \"c6a4874a-66e4-4fa4-ac44-7c1a0fd1d89a\",\n            \"createdAt\": \"2024-09-08T08:06:15.936Z\",\n            \"updatedAt\": \"2024-09-08T08:06:15.936Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"cc2ce2d5-884b-408a-8189-0f330e45809e\",\n            \"action\": \"CREATE_PROJECT\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T07:47:27.453Z\",\n            \"targetResource\": \"8110bc4e-8f3d-410b-9902-8d3ea60949b1\",\n            \"createdAt\": \"2024-09-08T07:47:27.453Z\",\n            \"updatedAt\": \"2024-09-08T07:47:27.453Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"57bf1603-fe89-4e30-ab87-ff9817e2533c\",\n            \"action\": \"CREATE_PROJECT\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T07:40:27.994Z\",\n            \"targetResource\": \"2254f51e-be95-48c1-82ad-6375badf053e\",\n            \"createdAt\": \"2024-09-08T07:40:27.994Z\",\n            \"updatedAt\": \"2024-09-08T07:40:27.994Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"bc67235d-02d1-45c2-8934-088636ea7421\",\n            \"action\": \"SIGNIN_USER\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T07:35:03.071Z\",\n            \"targetResource\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"createdAt\": \"2024-09-08T07:35:03.071Z\",\n            \"updatedAt\": \"2024-09-08T07:35:03.071Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"f49aef82-05f3-4073-9b39-513d2ac7d918\",\n            \"action\": \"SIGNIN_USER\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:44:44.703Z\",\n            \"targetResource\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"createdAt\": \"2024-09-08T05:44:44.704Z\",\n            \"updatedAt\": \"2024-09-08T05:44:44.704Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"054fd2fd-c535-4fa0-887c-35f718b3df09\",\n            \"action\": \"SIGNOUT_USER\",\n            \"performedBy\": \"b1205df4-ddbb-4ddd-9258-68ce29837a3a\",\n            \"performedAt\": \"2024-09-08T05:41:02.338Z\",\n            \"targetResource\": \"b1205df4-ddbb-4ddd-9258-68ce29837a3a\",\n            \"createdAt\": \"2024-09-08T05:41:02.338Z\",\n            \"updatedAt\": \"2024-09-08T05:41:02.338Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"7c6e2b8f-8dce-485b-9be0-1045d7a9c9cf\",\n            \"action\": \"FETCH_CURRENT_USER\",\n            \"performedBy\": \"b1205df4-ddbb-4ddd-9258-68ce29837a3a\",\n            \"performedAt\": \"2024-09-08T05:40:29.267Z\",\n            \"targetResource\": \"b1205df4-ddbb-4ddd-9258-68ce29837a3a\",\n            \"createdAt\": \"2024-09-08T05:40:29.267Z\",\n            \"updatedAt\": \"2024-09-08T05:40:29.267Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"26ee99d6-9e9d-4f73-90b3-9f7b2a72d308\",\n            \"action\": \"SIGNIN_USER\",\n            \"performedBy\": \"b1205df4-ddbb-4ddd-9258-68ce29837a3a\",\n            \"performedAt\": \"2024-09-08T05:39:58.020Z\",\n            \"targetResource\": \"b1205df4-ddbb-4ddd-9258-68ce29837a3a\",\n            \"createdAt\": \"2024-09-08T05:39:58.021Z\",\n            \"updatedAt\": \"2024-09-08T05:39:58.021Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"4ed0acd3-1c0c-4fab-8330-f2cdb3c5c1c3\",\n            \"action\": \"SIGNOUT_USER\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:39:43.581Z\",\n            \"targetResource\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"createdAt\": \"2024-09-08T05:39:43.582Z\",\n            \"updatedAt\": \"2024-09-08T05:39:43.582Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"5a319076-a915-44e7-b113-94e21cc3a54c\",\n            \"action\": \"FETCH_CURRENT_USER\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:38:03.941Z\",\n            \"targetResource\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"createdAt\": \"2024-09-08T05:38:03.941Z\",\n            \"updatedAt\": \"2024-09-08T05:38:03.941Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"78d6683b-2c21-485e-8618-13127ef788f7\",\n            \"action\": \"FETCH_CURRENT_USER\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:38:03.683Z\",\n            \"targetResource\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"createdAt\": \"2024-09-08T05:38:03.685Z\",\n            \"updatedAt\": \"2024-09-08T05:38:03.685Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"b311c2ae-8053-4a5e-8d0e-18be104b534e\",\n            \"action\": \"PERMANENT_DELETE_USER\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:35:08.029Z\",\n            \"targetResource\": \"272d4ac7-d924-4d0a-a449-facf275285f7\",\n            \"createdAt\": \"2024-09-08T05:35:08.030Z\",\n            \"updatedAt\": \"2024-09-08T05:35:08.030Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"846458be-eeaf-42b5-a7e0-ae2c6661e237\",\n            \"action\": \"RESTORE_USER_DETAILS\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:33:49.777Z\",\n            \"targetResource\": \"272d4ac7-d924-4d0a-a449-facf275285f7\",\n            \"createdAt\": \"2024-09-08T05:33:49.777Z\",\n            \"updatedAt\": \"2024-09-08T05:33:49.777Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"1c9656fa-da01-4e7c-945d-6ea4fd5691ab\",\n            \"action\": \"SOFT_DELETE_USER\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:33:14.163Z\",\n            \"targetResource\": \"272d4ac7-d924-4d0a-a449-facf275285f7\",\n            \"createdAt\": \"2024-09-08T05:33:14.164Z\",\n            \"updatedAt\": \"2024-09-08T05:33:14.164Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"35528555-036d-441b-bba7-3973ac82838f\",\n            \"action\": \"RESTORE_USER_DETAILS\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:30:36.903Z\",\n            \"targetResource\": \"272d4ac7-d924-4d0a-a449-facf275285f7\",\n            \"createdAt\": \"2024-09-08T05:30:36.903Z\",\n            \"updatedAt\": \"2024-09-08T05:30:36.903Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"53a1c378-fb03-43cf-a971-b350b19ddda4\",\n            \"action\": \"SOFT_DELETE_USER\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:29:58.834Z\",\n            \"targetResource\": \"272d4ac7-d924-4d0a-a449-facf275285f7\",\n            \"createdAt\": \"2024-09-08T05:29:58.834Z\",\n            \"updatedAt\": \"2024-09-08T05:29:58.834Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"275ed032-13c9-4374-a7b1-a32f714d3f33\",\n            \"action\": \"UPDATE_USER_DETAILS\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:29:09.464Z\",\n            \"targetResource\": \"272d4ac7-d924-4d0a-a449-facf275285f7\",\n            \"createdAt\": \"2024-09-08T05:29:09.464Z\",\n            \"updatedAt\": \"2024-09-08T05:29:09.464Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"b55b06dc-ff6f-4eb8-a45f-5d15b69f774c\",\n            \"action\": \"FETCH_USER_BY_ID\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:27:56.933Z\",\n            \"targetResource\": \"272d4ac7-d924-4d0a-a449-facf275285f7\",\n            \"createdAt\": \"2024-09-08T05:27:56.933Z\",\n            \"updatedAt\": \"2024-09-08T05:27:56.933Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"e513ed02-101b-4864-a5dd-e49d9a0fba56\",\n            \"action\": \"SIGNIN_USER\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:27:00.407Z\",\n            \"targetResource\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"createdAt\": \"2024-09-08T05:27:00.407Z\",\n            \"updatedAt\": \"2024-09-08T05:27:00.407Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"05f57641-9645-4786-9cec-35e08c695f72\",\n            \"action\": \"SIGNOUT_USER\",\n            \"performedBy\": \"b1205df4-ddbb-4ddd-9258-68ce29837a3a\",\n            \"performedAt\": \"2024-09-08T05:26:49.437Z\",\n            \"targetResource\": \"b1205df4-ddbb-4ddd-9258-68ce29837a3a\",\n            \"createdAt\": \"2024-09-08T05:26:49.437Z\",\n            \"updatedAt\": \"2024-09-08T05:26:49.437Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"a94ee998-1769-4f85-84da-14f15635afa3\",\n            \"action\": \"FETCH_ALL_USERS\",\n            \"performedBy\": \"b1205df4-ddbb-4ddd-9258-68ce29837a3a\",\n            \"performedAt\": \"2024-09-08T05:26:25.330Z\",\n            \"targetResource\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"createdAt\": \"2024-09-08T05:26:25.330Z\",\n            \"updatedAt\": \"2024-09-08T05:26:25.330Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"33b81ef8-bfa4-459d-9b67-3ac14ba97d82\",\n            \"action\": \"SIGNIN_USER\",\n            \"performedBy\": \"b1205df4-ddbb-4ddd-9258-68ce29837a3a\",\n            \"performedAt\": \"2024-09-08T05:25:51.704Z\",\n            \"targetResource\": \"b1205df4-ddbb-4ddd-9258-68ce29837a3a\",\n            \"createdAt\": \"2024-09-08T05:25:51.704Z\",\n            \"updatedAt\": \"2024-09-08T05:25:51.704Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"1a9c1922-4f0e-46db-b35f-4be728b56f14\",\n            \"action\": \"FETCH_ALL_USERS\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:25:27.812Z\",\n            \"targetResource\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"createdAt\": \"2024-09-08T05:25:27.812Z\",\n            \"updatedAt\": \"2024-09-08T05:25:27.812Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"04f24e28-5254-4b97-9a3f-1c7af2a7a877\",\n            \"action\": \"REGISTER_USER\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:24:47.689Z\",\n            \"targetResource\": \"272d4ac7-d924-4d0a-a449-facf275285f7\",\n            \"createdAt\": \"2024-09-08T05:24:47.689Z\",\n            \"updatedAt\": \"2024-09-08T05:24:47.689Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"ae332d96-5c98-425c-b10d-d0466bca0b59\",\n            \"action\": \"REGISTER_USER\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:24:30.565Z\",\n            \"targetResource\": \"a7911d90-208a-41d9-942e-cd22d345ee7c\",\n            \"createdAt\": \"2024-09-08T05:24:30.565Z\",\n            \"updatedAt\": \"2024-09-08T05:24:30.565Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"9e26dc50-c4b1-47d7-9fc0-b4a02351bcbc\",\n            \"action\": \"REGISTER_USER\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:24:13.000Z\",\n            \"targetResource\": \"ea518d78-6214-4c13-9bf1-d549a2a3a3ac\",\n            \"createdAt\": \"2024-09-08T05:24:13.000Z\",\n            \"updatedAt\": \"2024-09-08T05:24:13.000Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"5f194850-6618-4e09-bed7-b1e066a7e808\",\n            \"action\": \"REGISTER_USER\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:23:41.161Z\",\n            \"targetResource\": \"3c23de21-4dee-411c-800f-82358db65e2d\",\n            \"createdAt\": \"2024-09-08T05:23:41.162Z\",\n            \"updatedAt\": \"2024-09-08T05:23:41.162Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"f3634aea-60a0-4ee9-8529-4a31f239928d\",\n            \"action\": \"REGISTER_USER\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:23:17.605Z\",\n            \"targetResource\": \"b407db1d-2a96-45e3-8f73-43b318c3bc1d\",\n            \"createdAt\": \"2024-09-08T05:23:17.605Z\",\n            \"updatedAt\": \"2024-09-08T05:23:17.605Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"6b080a3e-d690-46c0-b981-0b5db7d0dd24\",\n            \"action\": \"REGISTER_USER\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:22:41.191Z\",\n            \"targetResource\": \"b1205df4-ddbb-4ddd-9258-68ce29837a3a\",\n            \"createdAt\": \"2024-09-08T05:22:41.191Z\",\n            \"updatedAt\": \"2024-09-08T05:22:41.191Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"394424aa-bf16-4eff-9c1f-595d6d2308bf\",\n            \"action\": \"SIGNIN_USER\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:22:08.911Z\",\n            \"targetResource\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"createdAt\": \"2024-09-08T05:22:08.911Z\",\n            \"updatedAt\": \"2024-09-08T05:22:08.911Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"2c3f6a62-72c9-46f8-b373-0464a781df19\",\n            \"action\": \"SIGNOUT_USER\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:21:31.685Z\",\n            \"targetResource\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"createdAt\": \"2024-09-08T05:21:31.686Z\",\n            \"updatedAt\": \"2024-09-08T05:21:31.686Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"1d9d2d84-bdf0-4ed3-ae46-47ddb0f07584\",\n            \"action\": \"SIGNIN_USER\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:20:33.489Z\",\n            \"targetResource\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"createdAt\": \"2024-09-08T05:20:33.489Z\",\n            \"updatedAt\": \"2024-09-08T05:20:33.489Z\",\n            \"deletedAt\": null\n        },\n        {\n            \"id\": \"1c9691aa-b244-4ab8-82d8-39cd004f5b5c\",\n            \"action\": \"REGISTER_ADMIN\",\n            \"performedBy\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"performedAt\": \"2024-09-08T05:19:45.552Z\",\n            \"targetResource\": \"80724380-f580-448a-9317-a181ad048f3e\",\n            \"createdAt\": \"2024-09-08T05:19:45.552Z\",\n            \"updatedAt\": \"2024-09-08T05:19:45.552Z\",\n            \"deletedAt\": null\n        }\n    ],\n    \"message\": \"Audit logs retrieved successfully\",\n    \"success\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "assign-role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": \"Manager\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{board}}/users/:userId/assign-role",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"users",
+								":userId",
+								"assign-role"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "b407db1d-2a96-45e3-8f73-43b318c3bc1d"
+								}
+							]
+						},
+						"description": "Assigns a specific role to a user in the system."
+					},
+					"response": [
+						{
+							"name": "user-role-assigned",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"role\": \"Manager\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4600/api/v1/users/:userId/assign-role",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										":userId",
+										"assign-role"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "b407db1d-2a96-45e3-8f73-43b318c3bc1d"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "301"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12d-zT8DPkXIgJg/0dfasUab4FpzW8k\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 09:27:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"id\": \"b407db1d-2a96-45e3-8f73-43b318c3bc1d\",\n        \"username\": \"deependra\",\n        \"email\": \"deependra@gmail.com\",\n        \"role\": \"Manager\",\n        \"createdAt\": \"2024-09-08T05:23:17.261Z\",\n        \"updatedAt\": \"2024-09-08T09:25:36.020Z\",\n        \"deletedAt\": null\n    },\n    \"message\": \"Role assigned successfully as Manager\",\n    \"success\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "revoke-role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{board}}/users/:userId/revoke-role",
+							"host": [
+								"{{board}}"
+							],
+							"path": [
+								"users",
+								":userId",
+								"revoke-role"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "b407db1d-2a96-45e3-8f73-43b318c3bc1d"
+								}
+							]
+						},
+						"description": "Removes a specific role from a user."
+					},
+					"response": [
+						{
+							"name": "user-role-revoked",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4600/api/v1/users/:userId/revoke-role",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4600",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										":userId",
+										"revoke-role"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "b407db1d-2a96-45e3-8f73-43b318c3bc1d"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "297"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"129-wfh7m85lchJPL/yJW/u8jIo/VgU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 08 Sep 2024 09:29:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"data\": {\n        \"id\": \"b407db1d-2a96-45e3-8f73-43b318c3bc1d\",\n        \"username\": \"deependra\",\n        \"email\": \"deependra@gmail.com\",\n        \"role\": \"Employee\",\n        \"createdAt\": \"2024-09-08T05:23:17.261Z\",\n        \"updatedAt\": \"2024-09-08T09:29:24.325Z\",\n        \"deletedAt\": null\n    },\n    \"message\": \"Role revoked and set to Employee\",\n    \"success\": true\n}"
+						}
+					]
+				}
+			],
+			"description": "The **Roles** feature manages user permissions and responsibilities. Admins can create and assign roles, such as Admin, Manager, or Employee, controlling access levels and actions each user can perform."
+		}
+	]
+}
