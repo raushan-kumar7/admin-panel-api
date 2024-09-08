@@ -2,9 +2,9 @@
 
 This Admin Panel API is built using Node.js, Express, and PostgreSQL to manage users, roles, projects, and audit logs with role-based access control. The API allows the Admin to create and manage users, assign roles, and manage projects. It also provides multi-level authentication and authorization using JWT tokens.
 
-### Weblink: [Deployment Link](https://admin-panel-api-elci.onrender.com)
+### Deployment Link: https://admin-panel-api-elci.onrender.com
 
-### Postman: [Collection](https://documenter.getpostman.com/view/33969186/2sAXjRWVXm)
+### Postman Collection: https://documenter.getpostman.com/view/33969186/2sAXjRWVXm
 
 ## Features
 
