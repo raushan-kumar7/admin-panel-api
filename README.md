@@ -69,6 +69,8 @@ This Admin Panel API is built using Node.js, Express, and PostgreSQL to manage u
 | POST   | `/api/v1/users/:userId/assign-role` | Assign a role to a user        | Admin only       |
 | POST   | `/api/v1/users/:userId/revoke-role` | Revoke a role from a user      | Admin only       |
 
+### ER Diagram
+<img width="450px;" src="https://res.cloudinary.com/cloud-alpha/image/upload/v1725946844/Common/admin-panel-api_jz94iv.png"/>
 
 ### Installation
 To run the server side of the Admin Panel API locally, follow these steps:
